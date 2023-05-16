@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="ub_with_double_keys">
+        <createTable tableName="C_TABLE">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_C_TABLE"/>
+            </column>
+            <column name="KTOPL" type="VARCHAR(255)"/>
+            <column name="SAKNR" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="ub_with_double_keys">
+        <createTable tableName="SKA1">
+            <column name="KTOPL" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SKA1"/>
+            </column>
+            <column name="SAKNR" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SKA1"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="ub_with_double_keys">
+        <createTable tableName="T004">
+            <column name="KTOPL" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_T004"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="4" author="ub_with_double_keys">
+        <createIndex indexName="IDX_C_TABLE_KTOPL" tableName="C_TABLE">
+            <column name="KTOPL"/>
+        </createIndex>
+
+<!--        <addForeignKeyConstraint baseColumnNames="KTOPL" baseTableName="C_TABLE" constraintName="FK_C_TABLE_ON_KTOPL"-->
+<!--                                 referencedColumnNames="KTOPL" referencedTableName="T004"/>-->
+    </changeSet>
+<!--    <changeSet id="5" author="ub_with_double_keys">-->
+<!--        <addForeignKeyConstraint baseColumnNames="KTOPL,SAKNR" baseTableName="C_TABLE"-->
+<!--                                 constraintName="FK_C_TABLE_ON_KTSA" referencedColumnNames="KTOPL,SAKNR"-->
+<!--                                 referencedTableName="SKA1"/>-->
+<!--    </changeSet>-->
+</databaseChangeLog>
